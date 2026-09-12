@@ -1,0 +1,1396 @@
+# ZUGZWANG Changelog Definitions
+# Contains version history and changes for the "What's New" dialog.
+
+APP_VERSION = "1.1.1"
+
+CHANGELOG = [
+    {
+        "version": "1.1.1",
+        "date": "September 10, 2026",
+        "label": "STABLE",
+        "label_color": "#30D158",
+        "changes": [
+            {
+                "type": "fixed",
+                "text": "Headed CAPTCHA Solver Bridge — Fixed event callback parameter handling so the real browser window launches immediately, focuses in front, and synchronizes cookies seamlessly when security challenges appear on Jobsuche or Google Maps."
+            },
+            {
+                "type": "fixed",
+                "text": "Resolved Watchdog SIGSEGV Memory Fault — Eliminated unsafe cross-thread stack frame inspections (sys._current_frames) on Apple Silicon / macOS ARM64 to ensure 100% app stability."
+            },
+            {
+                "type": "improved",
+                "text": "Zero-Lag Asyncio & SQLite Performance — Removed invasive runtime frame inspections from release builds, restoring native C-speed execution and fluid responsiveness during intense scraping runs."
+            },
+            {
+                "type": "fixed",
+                "text": "Smart Update Version Comparison Engine — Re-engineered version comparator to strict SemVer standards, ensuring pre-release versions (Beta / RC) reliably detect and prompt for stable upgrade releases."
+            },
+            {
+                "type": "new",
+                "text": "Native Pro-Apple Attachments & Zeugnisse Dialog — Re-architected certificate management with an ultra-sleek macOS card modal, featuring interactive drag-and-drop reordering, fluid animations, instant PDF previewing, and inline document removal."
+            },
+            {
+                "type": "improved",
+                "text": "Unified Outreach Trial Quota — Standardized trial limits across the entire platform to 20 Anschreiben cover letters and 20 email deliveries, eliminating quota discrepancies between exports and campaign outreach."
+            },
+            {
+                "type": "fixed",
+                "text": "Seamless Zeugnisse Bundle Delivery — Resolved export and email dispatch attachment issues to ensure Zeugnisse PDFs match dynamic file patterns and attach reliably alongside Cover Letters and CVs."
+            },
+            {
+                "type": "new",
+                "text": "Azubiyo Intelligent Job & Training Scraper — Added automated extraction for Azubiyo listings with fast pagination, location filtering, and direct company contact discovery."
+            },
+        ],
+    },
+    {
+        "version": "1.1.0 Beta6",
+        "date": "September 10, 2026",
+        "label": "BETA",
+        "label_color": "#0A84FF",
+        "changes": [
+            {
+                "type": "new",
+                "text": "Redesigned macOS Toast Notification System — Introduced a floating native macOS card (#2C2C2E, 14px radius, 0.5px border, 400px fixed width, zero shadow) with role-colored badges, clean typography, smooth physics animations, and persistent top-right window anchoring."
+            },
+            {
+                "type": "improved",
+                "text": "Google Maps Real-Time Scraper Streaming — Re-architected lead extraction from blocking batches to concurrent streaming via asyncio.as_completed, displaying discovered leads in the UI instantly without freezing."
+            },
+            {
+                "type": "improved",
+                "text": "Intelligent City & Address Tagging — Maps scraper now assigns the user's targeted search city directly to extracted leads, preventing district sub-names (e.g. sub-neighborhoods) from fragmenting your lead lists."
+            },
+            {
+                "type": "improved",
+                "text": "Standardized Column Visibility Preset & Persistent Memory — Table column settings now default to the clean standard preset (Company, Job / Category, Email, Phone, City, Source visible; Start Date, LinkedIn, Status, Scraped At hidden) and reliably remember your custom toggles across app launches and version upgrades."
+            },
+            {
+                "type": "fixed",
+                "text": "Table Search Filter Responsiveness — Overrode setFilterFixedString in the results proxy model so typing in the search box immediately filters table rows in real-time."
+            },
+            {
+                "type": "fixed",
+                "text": "'From Latest City' Import Accuracy — Clicking 'From Latest City' on the Edit Page now identifies the exact city from your recent search rather than restricting imports to a single lead's district."
+            },
+            {
+                "type": "new",
+                "text": "Standalone License Key Generator — Refactored genk.py into a zero-dependency, pure Python CLI tool supporting both interactive prompts and command-line arguments for instant PRO and Admin key creation."
+            },
+        ],
+    },
+    {
+        "version": "1.1.0 Beta5.1",
+        "date": "August 15, 2026",
+        "label": "RELEASED",
+        "label_color": "#007AFF",
+        "changes": [
+            {
+                "type": "new",
+                "text": "Extended Multi-Browser Engine — Overhauled browser automation with native detection and execution support for Safari, Brave, Arc, Dia, and custom Chromium/WebKit installations."
+            },
+            {
+                "type": "improved",
+                "text": "Project Obsidian UI Overhaul — Full aesthetic refactor aligning the entire application (Settings, Dashboard, Monitor, Edit) with Apple macOS System Preferences dark theme standards (#1C1C1E)."
+            },
+            {
+                "type": "improved",
+                "text": "Unified Component Outlines — Standardized all card borders (SectionCards and small metric cards) to a consistent, subtle 0.5px solid rgba(255, 255, 255, 0.1) across all views."
+            },
+            {
+                "type": "improved",
+                "text": "Activation & Licensing Dialog Polish — Rebuilt with native glassmorphism styling, synchronized button icon colors with label typography, dedicated grey 'Reset to Trial', and vibrant green 'Activate' CTA."
+            },
+            {
+                "type": "improved",
+                "text": "Dashboard Action Hierarchy — Streamlined dashboard controls with a primary green 'Support Us' action and removed redundant export triggers."
+            },
+            {
+                "type": "improved",
+                "text": "Monitor Page Seamless Integration — Background perfectly linked to global Obsidian palette, removing clunky inner card shadows for a clean flat surface."
+            },
+            {
+                "type": "improved",
+                "text": "Destructive Action Safety — Distinct solid red warning buttons for high-risk operations (such as 'Purge Sent') to prevent inadvertent data loss."
+            },
+            {
+                "type": "fixed",
+                "text": "Consecutive Multi-Search Reliability — Resolved an issue where starting a new search after job completion required restarting the app; worker event loops are now strictly isolated with bounded 5-second browser session teardowns."
+            },
+            {
+                "type": "fixed",
+                "text": "Send Tab Attachment Isolation — Manually attached files in the Send tab are now strictly isolated, preventing unexpected Anschreiben PDFs from being automatically merged into outbound emails."
+            },
+            {
+                "type": "fixed",
+                "text": "Deleted Bewerbung Ghost Removal — Deleting an uploaded PDF in the Edit page now immediately purges raw copies and cached batch PDFs from disk, preventing deleted files from being sent."
+            },
+            {
+                "type": "fixed",
+                "text": "Search History Dropdown macOS Ghost Shadow — Eliminated the buggy rectangular bounding box on macOS transparent popups; redesigned 'Clear History' into a clean, centered text-link."
+            },
+            {
+                "type": "fixed",
+                "text": "Monitor Activity Log Spam Reduction — Aggressively filtered low-level PyPDF warning noise ('Ignoring wrong pointing object') to keep live telemetry and activity streams clean."
+            },
+        ],
+    },
+    {
+        "version": "1.1.0 Beta4",
+        "date": "August 2, 2026",
+        "label": "RELEASED",
+        "label_color": "#007AFF",
+        "changes": [
+            {
+                "type": "new",
+                "text": "Smart Decision-Maker NLP Extraction — Enhanced contact person detection to extract specific names from German role titles (Pflegedienstleitung, Ansprechpartner für Bewerbungen, HR Manager) across Impressum & team pages"
+            },
+            {
+                "type": "new",
+                "text": "Pre-Send DNS Domain Verification — Automatically checks recipient domain DNS resolution before sending email broadcasts to filter out dead or unreachable domains and protect Gmail sender reputation"
+            },
+            {
+                "type": "new",
+                "text": "macOS Sleep Prevention (WakeLock) — Automatically prevents Mac from sleeping during long scraping tasks, PDF batch generation, and email outreach broadcasts"
+            },
+            {
+                "type": "new",
+                "text": "Das Oertliche Integration — Added a powerful new scraping engine for the German business directory 'Das Örtliche', extracting rich local business leads and B2B contacts directly into Zugzwang."
+            },
+            {
+                "type": "new",
+                "text": "Native Spreadsheet Import — Added a sleek, dedicated '+' button (with a vibrant green accent) to the Edit Page, allowing seamless, instant imports of .xlsx and .csv lead lists."
+            },
+            {
+                "type": "improved",
+                "text": "Intelligent Data Mapping — The import engine now automatically detects and maps German/English column headers (e.g., GmBh, ansprechner, email, phone) and merges them perfectly into your local database."
+            },
+            {
+                "type": "improved",
+                "text": "Dynamic Salutations & Personalization — Email templates and motivation letters now accurately populate placeholders like {{Firma}}, {{Anrede}}, and {{Contact Person}} by pulling rich HR contact data directly from your imported spreadsheets and web scrapers."
+            },
+            {
+                "type": "improved",
+                "text": "Apple-Style Logs & Results UI — Completely redesigned the Logs page to feature a native macOS aesthetic. Status indicators now use a pulsing green live dot, while dropdown filters and Export actions are styled as premium dark translucent chips with native dropdown menus. Fixed raw string rendering issues across badges."
+            },
+            {
+                "type": "improved",
+                "text": "Destructive Action Safety — Introduced a new distinct solid red 'destructive' button style for high-risk actions like 'Purge Sent' on the Email Sender page to prevent accidental data loss."
+            },
+            {
+                "type": "fixed",
+                "text": "Google Maps Scraper Stability — Resolved Playwright headless browser configuration issues, allowing the scraper to reliably bypass consent modals and seamlessly extract Maps listings in the background."
+            },
+            {
+                "type": "fixed",
+                "text": "Regenerate All UI Bug — Resolved a critical database synchronization issue where imported or previously modified leads would suddenly disappear from the sidebar when clicking 'Regenerate All'. The SQLite engine now accurately tracks lead visibility states."
+            },
+        ],
+    },
+    {
+        "version": "1.1.0 Beta 3",
+        "date": "August 1, 2026",
+        "label": "RELEASED",
+        "label_color": "#007AFF",
+        "changes": [
+            {
+                "type": "new",
+                "text": "Multi-Email Department & Employee Extraction — Advanced inline website scanner now captures every unique department head, HR manager, and staff email address (karriere@, bewerbung@, personal @domain) from an employer's website as individual leads for maximum outreach coverage"
+            },
+            {
+                "type": "new",
+                "text": "Real-Time Cross-Listing Deduplication Engine — Implemented an intelligent emitted_emails pipeline across both the fast Maps feed parser and interactive click/scroll loop, instantly dropping duplicate hospital or clinic entries that share identical email addresses"
+            },
+            {
+                "type": "improved",
+                "text": "SMTP Credential Sanitization Shield — Added automated zero-width space (\\u200b), non-breaking space (\\xa0), and BOM stripping when saving and authenticating Gmail App Passwords and SMTP host settings, eliminating silent ascii codec crashes"
+            },
+            {
+                "type": "improved",
+                "text": "Broadcast Queue Anti-Spam Protection — Enhanced the recipient import engine with automatic email deduplication (dict.fromkeys), protecting sender domain reputation by ensuring no employer ever receives duplicate outreach emails in a single campaign"
+            },
+            {
+                "type": "improved",
+                "text": "Dynamic Broadcast Queue Counter Polish — Refined the Broadcast Monitor status display and log reporting to show exact unique recipient metrics (QUEUE X EMAIL(S)) when loading raw database leads"
+            },
+            {
+                "type": "improved",
+                "text": "Smart Domain & Company Name Clustering — Added secondary heuristics to automatically recognize multi-department medical groups and combine redundant Google Maps candidates before starting headless browser enrichment"
+            },
+            {
+                "type": "improved",
+                "text": "Dynamic City & Location Normalization — Enhanced address and city extraction algorithms to automatically clean German location strings (Coesfeld, Coesfeld-Lette) without trailing punctuation or postal noise"
+            },
+            {
+                "type": "improved",
+                "text": "Universal Invisible Character Scrubbing — Added robust string sanitization across all input fields (SMTP settings, recipient lists, and search queries) to strip hidden copy-paste characters (\\xa0, \\u200b, \\ufeff)"
+            },
+            {
+                "type": "improved",
+                "text": "High-Capacity SQLite Memory Optimization — Streamlined local SQLite lead storage and indexing to prevent memory leaks and handle 500+ lead tables smoothly with instant search and category filtering"
+            },
+            {
+                "type": "fixed",
+                "text": "Google Maps 'Ergebnisse' Header Glitch Fix — Fixed an XPath extraction bug where German navigation headers and UI labels ('Ergebnisse', 'In der Nähe') on Google Maps were mistakenly scraped as employer titles, ensuring 100% clean lead names"
+            },
+            {
+                "type": "fixed",
+                "text": "macOS Qt Main-Thread Window Safeguards — Fortified GUI window instantiation and timer dispatchers to ensure all modal dialogs and notification banners run safely within the primary Cocoa UI event loop without background thread crashes"
+            }
+        ]
+    },
+    {
+        "version": "1.1.0 Beta 2",
+        "date": "July 1, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "improved",
+                "text": "85% Maps Scraper Speedup — Removed 120-second timeout delays on missing elements, reducing Google Maps latency drastically"
+            },
+            {
+                "type": "improved",
+                "text": "Unified Popup UI — Rewrote the Update Notification dialog to use the new premium draggable macOS-style aesthetic"
+            },
+            {
+                "type": "fixed",
+                "text": "Cover Letter Perfection — Tuned the PDF engine to use exactly 10pt fonts, single spacing, and optimized margins so generated Anschreiben always fit beautifully onto a single page"
+            }
+        ]
+    },
+    {
+        "version": "1.1.0 Beta",
+        "date": "June 26, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "new",
+                "text": "Dynamic Anschreiben Personalization — automatically generate perfectly tailored and personalized cover letters for every single lead"
+            },
+            {
+                "type": "new",
+                "text": "Fail-Forward Batch Exports — seamlessly falls back to attaching your raw uploaded PDF for leads that exceed your daily custom PDF limit without halting the workflow"
+            },
+            {
+                "type": "new",
+                "text": "Auto-Clamped Broadcasting — mass email broadcasts now automatically clamp to your remaining limit instead of blocking the entire batch"
+            },
+            {
+                "type": "improved",
+                "text": "Ausbildung Engine Upgrade — completely refactored the extraction engine to support robust URL-based radius parameters and true infinite-scroll pagination"
+            },
+            {
+                "type": "improved",
+                "text": "Scraping Latency Optimizations — massively reduced search latency by stripping out legacy hardcoded delays and streamlining intelligent browser timeouts"
+            },
+            {
+                "type": "improved",
+                "text": "Intrusive Popup Removal — completely removed hard-blocking 'Activate Pro' dialogs from all export and email functions, replacing them with elegant banners"
+            },
+            {
+                "type": "improved",
+                "text": "Edit Page Redesign — comprehensive rewrite of the editor UI for better responsiveness, cleaner spacing, and strict adherence to the premium macOS dark theme"
+            },
+            {
+                "type": "fixed",
+                "text": "Data Mapping Accuracy — resolved a parsing bug where the lead's city was incorrectly displaying inside the company name field in the activity stream"
+            },
+            {
+                "type": "fixed",
+                "text": "Progress Monitor Stability — eliminated a UI race condition in the Monitor page to ensure the extraction progress bar accurately reaches 100% upon completion"
+            },
+            {
+                "type": "fixed",
+                "text": "Visual Polish — fixed dark artifacting behind popup text and resolved UI layout overflows across the Settings and Email Sender pages"
+            }
+        ]
+    },
+    {
+        "version": "1.0.94",
+        "date": "April 30, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "improved",
+                "text": "Internal Build Tracking — ZUGZWANG now keeps a separate app build number so same-version hotfix releases can still be enforced through the updater"
+            },
+            {
+                "type": "fixed",
+                "text": "Upgrade State Reset — first launch after updating now refreshes stale local UI state automatically without touching scraped leads, sent-email history, or Pro activation"
+            },
+            {
+                "type": "fixed",
+                "text": "Settings Recovery Hardening — settings now save atomically with a backup file to protect Pro activation, Send drafts, and SMTP identity state from silent reset"
+            },
+            {
+                "type": "fixed",
+                "text": "Machine ID Recovery — if settings lose the stored machine identifier, ZUGZWANG now restores it from the persisted local machine ID file instead of falling back to an empty value"
+            },
+            {
+                "type": "fixed",
+                "text": "Send-State Protection — Send page persistence no longer wipes SMTP server settings during local edits or clear actions, preventing false 'SMTP Host not configured' failures"
+            },
+            {
+                "type": "fixed",
+                "text": "Launch Responsiveness — reduced startup/dashboard refresh pressure that could make Google Maps runs appear frozen or trigger temporary 'not responding' behavior on app launch"
+            },
+            {
+                "type": "fixed",
+                "text": "Recipient Queue Editing — inline email editing now uses a solid in-row editor so old text no longer bleeds through while typing"
+            },
+            {
+                "type": "fixed",
+                "text": "Recipient Queue Add Flow — manual recipient entry now uses a native app-styled dialog instead of the old system prompt"
+            },
+            {
+                "type": "improved",
+                "text": "Recipient Queue Controls — added icon actions for manual add, clear sent history, and smarter resend behavior when the composed message changes"
+            },
+            {
+                "type": "fixed",
+                "text": "Activity Log Cleanliness — internal startup and activation diagnostics no longer pollute the user-facing activity log"
+            },
+            {
+                "type": "fixed",
+                "text": "Jobsuche Flow Stability — Angebotsart, radius, and Detailansicht handling were hardened, with improved Kontakt panel / CAPTCHA recovery in detail pages"
+            },
+            {
+                "type": "fixed",
+                "text": "Headed Solver Reliability — duplicate CAPTCHA solver windows are now suppressed per job and shutdown is cleaner after manual solving"
+            },
+            {
+                "type": "improved",
+                "text": "Startup Upgrade Prompting — unsubscribed users now get a post-'What's New' activation prompt with recurring reminders while activated users stay quiet"
+            },
+            {
+                "type": "fixed",
+                "text": "Trial-to-Pro Transition — stale trial-capped search settings now recover correctly after activation instead of staying stuck at old free limits"
+            },
+        ]
+    },
+    {
+        "version": "1.0.9b",
+        "date": "April 22, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "new",
+                "text": "Sender Profiles — saved multiple Gmail sender identities with instant autocomplete and password autofill"
+            },
+            {
+                "type": "new",
+                "text": "Startup Pro Prompt — free users now see a launch-time upgrade dialog with a direct path to activation"
+            },
+            {
+                "type": "improved",
+                "text": "Broadcast Draft Persistence — Send page now preserves SMTP setup, queue, subject, body, interval, and attachments across cache cleanup"
+            },
+            {
+                "type": "improved",
+                "text": "Gmail Delivery Stability — each Gmail recipient now uses a fresh SMTP session to reduce Windows 10 disconnect issues"
+            },
+            {
+                "type": "improved",
+                "text": "Update Intelligence — developer builds like 1.0.9b no longer show false downgrade popups when GitHub is still on 1.0.9"
+            },
+            {
+                "type": "improved",
+                "text": "Google Maps Search Resilience — added direct search-URL fallback when packaged builds fail to submit the Maps search box"
+            },
+            {
+                "type": "improved",
+                "text": "Google Maps Startup Flow — packaged builds now go straight to the direct Maps search URL instead of wasting time on unreliable UI submit fallbacks"
+            },
+            {
+                "type": "improved",
+                "text": "Maps Category Extraction — Google Maps business-type buttons like 'Pflegeheim' and 'Plastischer Chirurg' now populate the Job / Category column"
+            },
+            {
+                "type": "improved",
+                "text": "Update Check Quiet Mode — offline or DNS lookup failures no longer spam false updater errors when GitHub cannot be reached"
+            },
+            {
+                "type": "fixed",
+                "text": "Stop Responsiveness — manual broadcast stop now interrupts long waits instead of hanging until the next delay finishes"
+            },
+            {
+                "type": "fixed",
+                "text": "Cached AppData Cleanup — reset stale local settings without touching scraped leads, SMTP credentials, or saved send drafts"
+            },
+            {
+                "type": "fixed",
+                "text": "Settings Cleanup Reliability — locked live log files are skipped safely and cleanup no longer runs SQLite operations on the main thread"
+            },
+            {
+                "type": "fixed",
+                "text": "License Persistence — machine ID now saves correctly and Pro activation is flushed immediately to survive app restart"
+            },
+            {
+                "type": "fixed",
+                "text": "Recipient Queue Editing — Send page emails can now be corrected inline with a double-click instead of delete-and-readd"
+            },
+            {
+                "type": "fixed",
+                "text": "Recipient Queue Editor Rendering — inline email editing no longer draws duplicated overlapping text inside the queue"
+            },
+        ]
+    },
+    {
+        "version": "1.0.9",
+        "date": "April 20, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "improved",
+                "text": "Ausbildung.de Pagination — native infinite scroll support for limitless lead extraction"
+            },
+            {
+                "type": "fixed",
+                "text": "Progress Indicators — resolved an update queue glitch where complete runs appeared stuck at 10%"
+            },
+            {
+                "type": "fixed",
+                "text": "Radius Accuracy — search URLs now perfectly match their configured catchment area"
+            },
+        ]
+    },
+    {
+        "version": "1.0.8",
+        "date": "April 18, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "improved",
+                "text": "Main Thread Performance — eliminated 10s-30s UI freezes during active scraping sessions"
+            },
+            {
+                "type": "improved",
+                "text": "Database Stability — migrated heavy SQLite operations to non-blocking background workers"
+            },
+            {
+                "type": "new",
+                "text": "macOS 'Obsidian' Dark Theme — applied globally via a native QProxyStyle for a cohesive experience"
+            },
+            {
+                "type": "improved",
+                "text": "Settings UI Polish — streamlined layout and removed redundant email configuration fields"
+            },
+        ]
+    },
+    {
+        "version": "1.0.7",
+        "date": "April 14, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "new",
+                "text": "Persistent Outreach Tracking—auto-skips duplicate emails across application restarts"
+            },
+            {
+                "type": "improved",
+                "text": "Broadcast Monitor UI—fully restored elegant card-based monitoring with console-style logs"
+            },
+            {
+                "type": "fixed",
+                "text": "Engine Stability—hardened background signals to prevent 'Signal deleted' crashes during I/O"
+            },
+            {
+                "type": "improved",
+                "text": "Activity Control—added clear-log and copy-log utilities for better troubleshooting"
+            },
+        ]
+    },
+    {
+        "version": "1.0.6",
+        "date": "April 6, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "improved",
+                "text": "Azubiyo Scraper Performance — implemented concurrent batched extraction for maximum speed"
+            },
+            {
+                "type": "improved",
+                "text": "Dashboard Data Reliability — synchronized startup sequence for perfect leads and metrics loading"
+            },
+            {
+                "type": "fixed",
+                "text": "Search History Crash — fixed UI unpacking error related to the new radius field"
+            },
+            {
+                "type": "fixed",
+                "text": "Dashboard Initialization — resolved a race condition causing intermittent startup crashes"
+            },
+        ]
+    },
+    {
+        "version": "1.0.4",
+        "date": "April 4, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "improved",
+                "text": "10x-20x Performance Boost — concurrent website crawling and optimized Jobsuche/Ausbildung scrapers"
+            },
+            {
+                "type": "fixed",
+                "text": "Eliminated Jobsuche CAPTCHA false-positives — now checks for real element visibility"
+            },
+            {
+                "type": "new",
+                "text": "Remote Security Engine — real-time kill-switch and discord telemetry integration"
+            },
+            {
+                "type": "improved",
+                "text": "Smoother scraping — removed legacy hardcoded delays across all search modules"
+            },
+            {
+                "type": "fixed",
+                "text": "Resolved Python SyntaxWarnings in Ausbildung and Azubiyo scrapers"
+            },
+        ]
+    },
+    {
+        "version": "1.0.3",
+        "date": "April 3, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "improved",
+                "text": "Ultra-reliable search history — pops up every time you click the field"
+            },
+            {
+                "type": "improved",
+                "text": "Comprehensive Guidance — Hover tooltips added to all search and dashboard elements"
+            },
+            {
+                "type": "improved",
+                "text": "Refined Results — renamed 'PUBLISHED' column to 'BEGINN' for better apprenticeship clarity"
+            },
+            {
+                "type": "fixed",
+                "text": "Fixed Search Page initialization error (RuntimeError)"
+            },
+            {
+                "type": "fixed",
+                "text": "Resolved dashboard rendering glitches and item overlap"
+            },
+        ]
+    },
+    {
+        "version": "1.0.2",
+        "date": "April 1, 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "new",
+                "text": "Smart search history — re-run past searches instantly"
+            },
+            {
+                "type": "new",
+                "text": "Live toast notifications for scrape progress"
+            },
+            {
+                "type": "new",
+                "text": "Drag-to-reorder recipient queue in Send page"
+            },
+            {
+                "type": "improved",
+                "text": "Aubi-Plus scraper now 10x faster using in-page fetch()"
+            },
+            {
+                "type": "improved",
+                "text": "Cookie modal auto-dismissed — no more blocked sessions"
+            },
+            {
+                "type": "fixed",
+                "text": "WIPE DATA and RESET buttons now render correctly"
+            },
+            {
+                "type": "fixed",
+                "text": "Settings page no longer scrolls out of viewport"
+            },
+        ]
+    },
+    {
+        "version": "1.0.1",
+        "date": "March 2026",
+        "label": None,
+        "label_color": None,
+        "changes": [
+            {
+                "type": "new",
+                "text": "Email Broadcast page with SMTP engine"
+            },
+            {
+                "type": "new",
+                "text": "Runtime Monitor with live activity stream"
+            },
+            {
+                "type": "improved",
+                "text": "Statistics table with source and city filters"
+            },
+            {
+                "type": "fixed",
+                "text": "Browser session no longer crashes on cookie modals"
+            },
+        ]
+    },
+    {
+        "version": "1.0.0",
+        "date": "February 2026",
+        "label": "INITIAL",
+        "label_color": "#8E8E93",
+        "changes": [
+            {
+                "type": "new",
+                "text": "Initial release — Ausbildung.de + Aubi-Plus scrapers"
+            },
+            {
+                "type": "new",
+                "text": "Google Maps business extraction"
+            },
+            {
+                "type": "new",
+                "text": "Lead database with Excel export"
+            },
+        ]
+    }
+]
+
+CHANGELOG_AR = [
+    {
+        "version": "1.1.1",
+        "date": "10 سبتمبر 2026",
+        "label": "مستقر",
+        "label_color": "#30D158",
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "fixed",
+                "text": "جسر حل كابتشا المتصفح الحقيقي (Headed CAPTCHA Solver) — إصلاح معالجة معاملات رد النداء لفتح نافذة المتصفح الحقيقي فوراً وإحضارها للمقدمة ومزامنة ملفات تعريف الارتباط بسلاسة عند ظهور الكابتشا في Jobsuche أو خرائط Google."
+            },
+            {
+                "type": "fixed",
+                "text": "معالجة خطأ الذاكرة SIGSEGV في مراقب العمليات — إزالة عمليات فحص إطارات العمليات غير الآمنة عبر الخيوط (sys._current_frames) على أجهزة Apple Silicon لضمان استقرار التطبيق بنسبة 100% ومنع الانهيار."
+            },
+            {
+                "type": "improved",
+                "text": "أداء سريع وخفيف لـ Asyncio و SQLite — التخلص من تتبع المكدس البطيء في نسخ الإصدارات الرسمية، واستعادة السرعة الأصلية وسلاسة الواجهة أثناء عمليات البحث والاستخراج المكثفة."
+            },
+            {
+                "type": "fixed",
+                "text": "محرك مقارنة الإصدارات الذكي للتحديثات — إعادة هندسة مقارن الإصدارات وفق المعايير الدقيقة لضمان اكتشاف الإصدارات التجريبية (Beta / RC) للإصدارات المستقرة الأحدث ومطالبة المستخدم بالترقية فوراً."
+            },
+            {
+                "type": "new",
+                "text": "نافذة إدارة المرفقات والشهادات (Zeugnisse) بتصميم Apple الاحترافي — إعادة بناء شاملة لنافذة المرفقات بأسلوب بطاقات macOS الفاخر، مع دعم إعادة الترتيب التفاعلي بالسحب والإفلات (Drag & Drop)، وحركات انسيابية، ومعاينة فورية للمستندات وحذف سهل."
+            },
+            {
+                "type": "improved",
+                "text": "توحيد حدود التجربة المجانية — رفع وتوحيد الحد التجريبي للمنصة بالكامل إلى 20 خطاب تقديم (Anschreiben) و20 بريداً إلكترونياً، مما يلغي التفاوت بين التصدير والإرسال."
+            },
+            {
+                "type": "fixed",
+                "text": "إصلاح إرفاق حزم الشهادات التلقائي — حل مشكلة إرفاق ملفات الشهادات (Zeugnisse) في ميزة التصدير والإرسال 'خطاب + سيرة ذاتية + شهادات'، لتتطابق أسماء الملفات ديناميكياً وتصل إلى المستلم بدقة."
+            },
+            {
+                "type": "new",
+                "text": "مستخرج وظائف وتدريب Azubiyo الذكي — إضافة محرك استخراج تلقائي متطور لمنصة Azubiyo مع دعم التصفح والتصفية حسب الموقع الجغرافي واستخراج بيانات التواصل المباشرة للشركات."
+            },
+        ],
+    },
+    {
+        "version": "1.1.0 Beta6",
+        "date": "10 سبتمبر 2026",
+        "label": "تجريبي",
+        "label_color": "#0A84FF",
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "new",
+                "text": "نظام إشعارات Toast بتصميم macOS الأصلي — تصميم بطاقة macOS عائمة أنيقة (#2C2C2E، نصف قطر 14px، حدود 0.5px، عرض 400px، بدون ظلال غير مرغوبة) مع شارات ملونة للأيقونات وخطوط محسّنة وموقع ثابت في الزاوية العلوية اليمنى مع حركات انسيابية."
+            },
+            {
+                "type": "improved",
+                "text": "بث مباشر لنتائج استخراج خرائط Google — الانتقال من التجميع المعلق إلى البث الفوري عبر asyncio.as_completed، مما يتيح ظهور العملاء المحتملين في الوقت الفعلي فور اكتشافهم دون تجميد واجهة المستخدم."
+            },
+            {
+                "type": "improved",
+                "text": "استخراج دقيق للمدينة والعناوين — يتم الآن ربط العملاء المحتملين المستخرجين من خرائط Google تلقائياً بالمدينة التي تم البحث عنها بدلاً من أسماء الأحياء الفرعية، مما يضمن تصنيفاً واضحاً ودقيقاً للعملاء."
+            },
+            {
+                "type": "improved",
+                "text": "حفظ مخصص ومظهر افتراضي لأعمدة النتائج — تم ضبط الأعمدة الافتراضية على النمط القياسي الأنيق (إظهار الشركة، المسمى الوظيفي، البريد، الهاتف، المدينة، المصدر؛ وإخفاء تاريخ البدء، ولينكد إن، والحالة، وتاريخ الاستخراج)، مع حفظ دائم لتفضيلات الأعمدة عبر جلسات التطبيق والتحديثات."
+            },
+            {
+                "type": "fixed",
+                "text": "إصلاح شريط البحث في جدول النتائج — حل مشكلة عدم استجابة شريط البحث في صفحة النتائج وتحديث نموذج التصفية لعرض النتائج المطابقة فورياً."
+            },
+            {
+                "type": "fixed",
+                "text": "تصحيح استيراد العملاء حسب آخر مدينة — زر 'من آخر مدينة' في صفحة التعديل يستورد الآن بشكل صحيح كافة العملاء التابعين للمدينة التي تم البحث فيها بدلاً من التقيد بحي أو منطقة فرعية واحدة."
+            },
+            {
+                "type": "new",
+                "text": "أداة ترخيص مستقلة وسريعة — ترقية أداة genk.py لتصبح مستقلة تماماً بدون أي مكتبات خارجية لتوليد مفاتيح PRO و Admin للعملاء بسهولة عبر سطر الأوامر أو الواجهة التفاعلية."
+            },
+        ],
+    },
+    {
+        "version": "1.1.0 Beta5.1",
+        "date": "15 أغسطس 2026",
+        "label": "تم الإطلاق",
+        "label_color": "#007AFF",
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "new",
+                "text": "دعم موسع لمتصفحات متعددة — ترقية محرك الأتمتة ليدعم أصلياً الكشف والتشغيل لمتصفحات Safari و Brave و Arc و Dia بالإضافة إلى إصدارات Chromium و WebKit."
+            },
+            {
+                "type": "improved",
+                "text": "تحديث تصميم مشروع Obsidian — إعادة تصميم شاملة لواجهة المستخدم لتتوافق مع إرشادات macOS Dark Mode (#1C1C1E) عبر جميع الصفحات."
+            },
+            {
+                "type": "improved",
+                "text": "توحيد حواف وحدود البطاقات — توحيد الإطارات والحدود لجميع البطاقات الكبيرة والصغيرة بلون رمادي شفاف متناسق 0.5px solid rgba(255, 255, 255, 0.1)."
+            },
+            {
+                "type": "improved",
+                "text": "تحسين نافذة التفعيل والترخيص — إعادة بناء النافذة بتأثير زجاجي أنيق، ومطابقة ألوان الأيقونات مع النصوص، مع زر تفعيل أخضر مميز وزر إعادة تعيين رمادي."
+            },
+            {
+                "type": "improved",
+                "text": "تحسين لوحة التحكم (Dashboard) — إعادة ترتيب الأزرار لتقديم زر الدعم 'Support Us' باللون الأخضر وإزالة أزرار التصدير الزائدة."
+            },
+            {
+                "type": "improved",
+                "text": "تحسين صفحة المراقبة (Monitor) — ربط الخلفية بلون Obsidian وإزالة الظلال الزائدة من البطاقات الداخلية لضمان مظهر مسطح ونظيف."
+            },
+            {
+                "type": "improved",
+                "text": "أمان الإجراءات الحساسة — تصميم أزرار حمراء واضحة للعمليات الحساسة (مثل مسح الرسائل المرسلة) لمنع فقدان البيانات."
+            },
+            {
+                "type": "fixed",
+                "text": "استقرار البحث المتتالي — حل مشكلة عدم القدرة على بدء بحث جديد بعد انتهاء البحث السابق دون إعادة تشغيل التطبيق، مع عزل حلقات الأحداث وإنهاء جلسات المتصفح في 5 ثوان كحد أقصى."
+            },
+            {
+                "type": "fixed",
+                "text": "عزل مرفقات صفحة الإرسال — المرفقات اليدوية في صفحة الإرسال معزولة تماماً الآن لمنع إرفاق خطابات تقديم (Anschreiben) قديمة بشكل تلقائي غير مرغوب فيه."
+            },
+            {
+                "type": "fixed",
+                "text": "حذف الملفات الملغاة في صفحة التعديل — حذف ملف التقديم في صفحة التعديل يقوم فورياً بإزالة النسخ المحفوظة على القرص لمنع إرسال ملفات محذوفة."
+            },
+            {
+                "type": "fixed",
+                "text": "إصلاح ظل قائمة سجل البحث في macOS — إزالة الظل المستطيل المشوه في نظام ماك، وجعل زر 'مسح السجل' في المنتصف بتصميم نصوص أنيق."
+            },
+            {
+                "type": "fixed",
+                "text": "تصفية رسائل التحذير المزعجة في السجل — تصفية تحذيرات PyPDF المتكررة للحفاظ على نظافة سجل النشاط المباشر."
+            },
+        ]
+    },
+    {
+        "version": "1.1.0 Beta4",
+        "date": "2 أغسطس 2026",
+        "label": "تم الإصدار",
+        "label_color": "#007AFF",
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "new",
+                "text": "استخراج صناع القرار بذكاء اصطناعي (NLP) — تعزيز الكشف عن الأشخاص المسؤولين لاستخراج أسماء محددة من المسميات الوظيفية الألمانية."
+            },
+            {
+                "type": "new",
+                "text": "التحقق من الدومين قبل الإرسال — يتحقق تلقائيًا من وجود الدومين قبل إرسال الرسائل لتصفية الإيميلات الميتة وحماية سمعة الإرسال."
+            },
+            {
+                "type": "new",
+                "text": "منع السكون في نظام ماك (WakeLock) — يمنع نظام الماك تلقائيًا من النوم أثناء مهام السحب الطويلة والإرسال الجماعي."
+            },
+            {
+                "type": "new",
+                "text": "دمج دليل Das Oertliche — تمت إضافة محرك سحب جديد وقوي لدليل الأعمال الألماني Das Örtliche، مما يتيح استخراج بيانات الأعمال المحلية مباشرة."
+            },
+            {
+                "type": "new",
+                "text": "استيراد الجداول الأصلية — إضافة زر مخصص '+' في صفحة التعديل، مما يتيح استيراد قوائم العملاء بصيغتي .xlsx و .csv بكل سهولة وفورية."
+            },
+            {
+                "type": "improved",
+                "text": "تخطيط البيانات الذكي — محرك الاستيراد يكتشف ويطابق العناوين (مثل GmBh، البريد الإلكتروني، الهاتف) ويدمجها بشكل مثالي في قاعدة البيانات المحلية."
+            },
+            {
+                "type": "improved",
+                "text": "التحيات الديناميكية والتخصيص — تقوم قوالب البريد الإلكتروني الآن بملء العناصر النائبة مثل {{Firma}} و {{Contact Person}} تلقائياً باستخدام البيانات المستخرجة من الجداول المستوردة."
+            },
+            {
+                "type": "improved",
+                "text": "واجهة سجلات ونتائج بنمط Apple — إعادة تصميم كاملة لصفحة السجلات (Logs) لتتميز بمظهر macOS الأصلي. إصلاح مشاكل النصوص في الشارات، وإضافة فلاتر وأزرار تصدير شفافة بقوائم منسدلة."
+            },
+            {
+                "type": "improved",
+                "text": "حماية الإجراءات المدمرة — تقديم تصميم جديد ومميز (أحمر صلب) للأزرار ذات المخاطر العالية مثل 'مسح المرسل' في صفحة الإرسال لمنع فقدان البيانات عن طريق الخطأ."
+            },
+            {
+                "type": "fixed",
+                "text": "استقرار ساحب خرائط جوجل — إصلاح مشاكل تكوين متصفح Playwright المخفي، مما يتيح للساحب تجاوز نوافذ الموافقة واستخراج القوائم في الخلفية بموثوقية."
+            },
+            {
+                "type": "fixed",
+                "text": "إصلاح خلل 'إعادة إنشاء الكل' — حل مشكلة مزامنة حاسمة في قاعدة البيانات حيث كانت جهات الاتصال المعدلة أو المستوردة تختفي من الشريط الجانبي عند النقر على 'إعادة إنشاء الكل'."
+            }
+        ]
+    },
+    {
+        "version": "1.1.0 Beta 3",
+        "date": "1 أغسطس 2026",
+        "label": "تم الإصدار",
+        "label_color": "#007AFF",
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "new",
+                "text": "استخراج بريد إلكتروني متعدد للأقسام والموظفين — يتيح الماسح المتقدم للمواقع التقاط كل بريد إلكتروني فريد لمديري الموارد البشرية والأقسام والموظفين من موقع صاحب العمل كعملاء مستقلين لضمان أوسع نطاق تواصل ممكن"
+            },
+            {
+                "type": "new",
+                "text": "محرك ذكي لمنع التكرار الفوري بين القوائم — تطبيق نظام تصفية فوري emitted_emails عبر محرك استخراج خرائط جوجل والتصفح التفاعلي، لاستبعاد القوائم المكررة للمستشفيات أو العيادات التي تشترك في نفس عنوان البريد الإلكتروني تلقائيًا"
+            },
+            {
+                "type": "improved",
+                "text": "درع تنظيف وحماية بيانات اعتماد SMTP — إضافة معالجة تلقائية لإزالة المسافات غير المرئية والرموز المخفية عند حفظ كلمات مرور تطبيقات Gmail وإعدادات الخادم، مما يمنع أعطال التشفير ascii codec نهائيًا"
+            },
+            {
+                "type": "improved",
+                "text": "حماية سمعة الراسل في طابور البث المباشر — تطوير نظام استيراد قائمة المستقبلين بفلترة تلقائية تمنع تكرار رسائل البريد الإلكتروني لنفس جهة العمل ضمن الحملة الواحدة لحماية النطاق من الحظر"
+            },
+            {
+                "type": "improved",
+                "text": "تحسين عداد طابور الإرسال وتقارير المراقبة — تحديث شاشة المراقبة وسجلات البث لتعكس العدد الدقيق للمستلمين الفريدين بوضوح تام عند استيراد البيانات من قاعدة البيانات"
+            },
+            {
+                "type": "improved",
+                "text": "تجميع ذكي لأسماء الشركات والنطاقات — إضافة خوارزميات مساعدة للتعرف التلقائي على المجموعات الطبية متعددة الأقسام ودمج المرشحين المتكررين قبل بدء الاستخراج"
+            },
+            {
+                "type": "improved",
+                "text": "تنقية متقدمة لأسماء المدن والمواقع — تحسين خوارزميات استخراج أسماء المدن والمواقع الألمانية (Coesfeld، Coesfeld-Lette) وإزالة الرموز الزائدة والضوضاء النحوية تلقائيًا"
+            },
+            {
+                "type": "improved",
+                "text": "تنظيف شامل للرموز والأحرف المخفية — إضافة تعقيم فوري لجميع حقول النصوص وقوائم المستقبلين لإزالة مسافات النسخ واللصق المخفية (\\xa0، \\u200b، \\ufeff)"
+            },
+            {
+                "type": "improved",
+                "text": "تحسين أداء واستهلاك الذاكرة لقاعدة بيانات SQLite — تحسين استجابة قاعدة البيانات المحلية للتعامل مع أكثر من 500 عميل بسلاسة فائقة وبحث فوري بدون استنزاف للذاكرة"
+            },
+            {
+                "type": "fixed",
+                "text": "إصلاح خطأ التقاط العناوين الملاحية 'Ergebnisse' في خرائط جوجل — معالجة خلل في استخراج XPath حيث كانت عناوين التصفح الألمانية ('Ergebnisse'، 'In der Nähe') تُستخرج خطأً كأسماء جهات عمل، لضمان أسماء شركات نقية 100%"
+            },
+            {
+                "type": "fixed",
+                "text": "حماية النوافذ ومؤقتات العرض على نظام macOS — تعزيز استقرار واجهة المستخدم بضمان تشغيل جميع النوافذ المنبثقة والإشعارات حصريًا على المسار الرئيسي (Main Thread) لمنع أي تعارض في نظام التشغيل"
+            }
+        ]
+    },
+    {
+        "version": "1.1.0 Beta 2",
+        "date": "1 يوليو 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "improved",
+                "text": "تسريع خرائط جوجل بنسبة 85% — إزالة تأخيرات مهلة 120 ثانية على العناصر المفقودة، مما قلل من وقت انتظار الاستخراج بشكل جذري"
+            },
+            {
+                "type": "improved",
+                "text": "توحيد واجهة النوافذ المنبثقة — إعادة كتابة نافذة إشعار التحديث لاستخدام تصميم macOS الجديد الفاخر والقابل للسحب"
+            },
+            {
+                "type": "fixed",
+                "text": "مثالية خطاب التقديم — ضبط محرك PDF لاستخدام خطوط بحجم 10pt بالضبط، وتباعد مفرد، وهوامش محسّنة بحيث تتسع خطابات Anschreiben دائمًا بشكل جميل في صفحة واحدة"
+            }
+        ]
+    },
+    {
+        "version": "1.1.0 Beta",
+        "date": "26 يونيو 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "new",
+                "text": "تخصيص ديناميكي لخطاب التقديم — توليد خطابات تقديم مخصصة ومصاغة بذكاء لكل شركة تلقائياً وبكل احترافية"
+            },
+            {
+                "type": "new",
+                "text": "تصدير الدفعات بمرونة — يتخطى الحد اليومي عبر إرفاق سيرتك الذاتية الأصلية للعملاء المتبقين دون تعطيل سير العمل"
+            },
+            {
+                "type": "new",
+                "text": "تقييد البث الذكي — بث رسائل البريد يقوم تلقائياً بضبط الدفعة لتتناسب مع الحد المتبقي بدل حظر العملية بالكامل"
+            },
+            {
+                "type": "improved",
+                "text": "ترقية محرك Ausbildung — إعادة بناء محرك الاستخراج لدعم نطاقات البحث المستندة إلى الروابط والتمرير اللانهائي الحقيقي"
+            },
+            {
+                "type": "improved",
+                "text": "تسريع الاستخراج — تقليل كبير في وقت الانتظار من خلال إزالة التأخيرات القديمة وتحسين مهل المتصفح الذكية"
+            },
+            {
+                "type": "improved",
+                "text": "إزالة النوافذ المزعجة — إزالة نوافذ التفعيل المعرقلة من جميع وظائف التصدير واستبدالها بإشعارات أنيقة"
+            },
+            {
+                "type": "improved",
+                "text": "إعادة تصميم صفحة التحرير — إعادة كتابة واجهة المحرر لتحسين الاستجابة والالتزام بمظهر macOS الداكن الفاخر"
+            },
+            {
+                "type": "fixed",
+                "text": "دقة تعيين البيانات — حل مشكلة تقنية حيث كان اسم المدينة يظهر بالخطأ داخل حقل اسم الشركة في سجل النشاط"
+            },
+            {
+                "type": "fixed",
+                "text": "استقرار شريط التقدم — القضاء على خلل برمجي في صفحة المراقبة لضمان وصول شريط الاستخراج إلى 100% بدقة"
+            },
+            {
+                "type": "fixed",
+                "text": "تحسينات بصرية — إصلاح المربعات الداكنة خلف النصوص المنبثقة وحل مشكلة تجاوز وتداخل العناصر في صفحة الإعدادات"
+            }
+        ]
+    },
+    {
+        "version": "1.0.94",
+        "date": "30 أبريل 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "improved",
+                "text": "تتبع رقم البناء الداخلي — أصبح لدى ZUGZWANG الآن رقم build منفصل حتى يمكن فرض إصلاحات بنفس رقم النسخة الظاهر عبر أداة التحديث"
+            },
+            {
+                "type": "fixed",
+                "text": "إعادة ضبط حالة الترقية — أول تشغيل بعد التحديث يجدد حالة الواجهة المحلية القديمة تلقائياً بدون المساس بالعملاء المستخرجين أو سجل الإرسال أو تفعيل Pro"
+            },
+            {
+                "type": "fixed",
+                "text": "تحرير قائمة المستلمين — محرر البريد داخل السطر أصبح يستخدم حقلاً معتماً بالكامل حتى لا يبقى النص القديم ظاهراً أثناء الكتابة"
+            },
+            {
+                "type": "fixed",
+                "text": "إضافة مستلم يدوياً — إدخال البريد اليدوي أصبح يستخدم نافذة داخلية منسجمة مع تصميم التطبيق بدل النافذة النظامية القديمة"
+            },
+        ]
+    },
+    {
+        "version": "1.0.9b",
+        "date": "22 أبريل 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "new",
+                "text": "ملفات تعريف المرسل — حفظ عدة هويات Gmail مع إكمال تلقائي فوري وملء تلقائي لكلمة مرور التطبيق"
+            },
+            {
+                "type": "new",
+                "text": "نافذة ترقية عند التشغيل — المستخدم التجريبي يرى الآن نافذة تفعيل عند بدء التطبيق مع مسار مباشر للترقية"
+            },
+            {
+                "type": "improved",
+                "text": "استمرارية مسودة البث — صفحة الإرسال تحفظ إعدادات SMTP وقائمة المستلمين والعنوان والمحتوى والفاصل الزمني والمرفقات حتى بعد تنظيف الكاش"
+            },
+            {
+                "type": "improved",
+                "text": "استقرار إرسال Gmail — كل مستلم في Gmail يستخدم الآن جلسة SMTP جديدة لتقليل انقطاعات Windows 10"
+            },
+            {
+                "type": "improved",
+                "text": "ذكاء التحديث — الإصدارات التطويرية مثل 1.0.9b لم تعد تعرض تنبيهات تحديث خاطئة عندما يكون GitHub ما زال على 1.0.9"
+            },
+            {
+                "type": "improved",
+                "text": "مرونة بحث خرائط Google — تمت إضافة مسار مباشر عبر رابط البحث عندما تفشل النسخة المجمعة في إرسال مربع بحث الخرائط"
+            },
+            {
+                "type": "improved",
+                "text": "استخراج فئة خرائط Google — أزرار نوع النشاط مثل 'Pflegeheim' و 'Plastischer Chirurg' تملأ الآن عمود الوظيفة / الفئة"
+            },
+            {
+                "type": "fixed",
+                "text": "استجابة الإيقاف — إيقاف البث اليدوي يقطع فترات الانتظار الطويلة فوراً بدل التعليق حتى ينتهي التأخير"
+            },
+            {
+                "type": "fixed",
+                "text": "تنظيف AppData المؤقت — إعادة ضبط الإعدادات المحلية القديمة بدون المساس بالعملاء المستخرجين أو بيانات SMTP أو مسودات الإرسال"
+            },
+            {
+                "type": "fixed",
+                "text": "موثوقية تنظيف الإعدادات — يتم تخطي ملفات السجل المقفلة بأمان ولم تعد عمليات SQLite تعمل على الخيط الرئيسي"
+            },
+            {
+                "type": "fixed",
+                "text": "استمرارية الترخيص — يتم الآن حفظ معرف الجهاز بشكل صحيح مع حفظ التفعيل فوراً حتى يبقى وضع Pro بعد إعادة تشغيل التطبيق"
+            },
+            {
+                "type": "fixed",
+                "text": "تحرير قائمة المستلمين — يمكن الآن تصحيح البريد الإلكتروني داخل صفحة الإرسال بالنقر المزدوج بدل الحذف ثم الإضافة من جديد"
+            },
+        ]
+    },
+    {
+        "version": "1.0.9",
+        "date": "20 أبريل 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "improved",
+                "text": "تصفح صفحات Ausbildung.de — دعم التمرير اللانهائي لاستخراج عدد غير محدود من العملاء"
+            },
+            {
+                "type": "fixed",
+                "text": "مؤشرات التقدم — حل خلل في طابور التحديث كان يجعل المهام المكتملة تظهر عالقة عند 10%"
+            },
+            {
+                "type": "fixed",
+                "text": "دقة نطاق البحث — روابط البحث تتطابق الآن تماماً مع النطاق الجغرافي المحدد"
+            },
+        ]
+    },
+    {
+        "version": "1.0.8",
+        "date": "18 أبريل 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "improved",
+                "text": "أداء الخيط الرئيسي — القضاء على تجمد الواجهة من 10 إلى 30 ثانية أثناء الاستخراج النشط"
+            },
+            {
+                "type": "improved",
+                "text": "استقرار قاعدة البيانات — نقل عمليات SQLite الثقيلة إلى عمال خلفية غير معرقلين"
+            },
+            {
+                "type": "new",
+                "text": "مظهر macOS الداكن 'Obsidian' — تم تطبيقه في جميع أنحاء التطبيق لتجربة متناسقة"
+            },
+            {
+                "type": "improved",
+                "text": "تحسين واجهة الإعدادات — تبسيط التخطيط وإزالة حقول تكوين البريد الإلكتروني الزائدة"
+            },
+        ]
+    },
+    {
+        "version": "1.0.7",
+        "date": "14 أبريل 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "new",
+                "text": "تتبع التواصل المستمر — يتخطى تلقائيًا رسائل البريد الإلكتروني المكررة عبر إعادة تشغيل التطبيق"
+            },
+            {
+                "type": "improved",
+                "text": "واجهة مراقب البث — استعادة المراقبة الأنيقة القائمة على البطاقات مع سجلات بنمط الكونسول"
+            },
+            {
+                "type": "fixed",
+                "text": "استقرار المحرك — تحصين الإشارات الخلفية لمنع تعطل 'حذف الإشارة' أثناء الإدخال/الإخراج"
+            },
+            {
+                "type": "improved",
+                "text": "التحكم في النشاط — إمكانية مسح السجل ونسخه لتحسين استكشاف الأخطاء وإصلاحها"
+            },
+        ]
+    },
+    {
+        "version": "1.0.6",
+        "date": "6 أبريل 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "improved",
+                "text": "أداء مستخرج Azubiyo — تنفيذ استخراج الدفعات المتزامنة لأقصى سرعة"
+            },
+            {
+                "type": "improved",
+                "text": "موثوقية بيانات لوحة التحكم — مزامنة تسلسل بدء التشغيل لتحميل مثالي للعملاء والمقاييس"
+            },
+            {
+                "type": "fixed",
+                "text": "إصلاح تعطل سجل البحث — معالجة خطأ في واجهة المستخدم يتعلق بحقل نطاق البحث الجديد"
+            },
+            {
+                "type": "fixed",
+                "text": "إصلاح تهيئة لوحة التحكم — معالجة مشكلة تسببت في تعطل التطبيق عند بدء التشغيل"
+            },
+        ]
+    },
+    {
+        "version": "1.0.4",
+        "date": "4 أبريل 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "improved",
+                "text": "زيادة الأداء 10-20 مرة — زحف متزامن للمواقع وتحسين محركات البحث في Jobsuche و Ausbildung"
+            },
+            {
+                "type": "fixed",
+                "text": "إلغاء تنبيهات CAPTCHA الخاطئة — يعتمد الآن على الرؤية الفعلية للعناصر"
+            },
+            {
+                "type": "new",
+                "text": "محرك الأمان عن بعد — دمج مفتاح الإيقاف الفوري وتنبيهات Discord"
+            },
+            {
+                "type": "improved",
+                "text": "استخراج أكثر سلاسة — إزالة فترات التأخير القديمة في جميع وحدات البحث"
+            },
+            {
+                "type": "fixed",
+                "text": "إصلاح تحذيرات لغة Python في مستخرجات Ausbildung و Azubiyo"
+            },
+        ]
+    },
+    {
+        "version": "1.0.3",
+        "date": "3 أبريل 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "improved",
+                "text": "موثوقية سجل البحث — تظهر القائمة المنسدلة الآن في كل نقرة"
+            },
+            {
+                "type": "improved",
+                "text": "تعليمات توضيحية شاملة (Tooltips) في جميع أنحاء الصفحة"
+            },
+            {
+                "type": "improved",
+                "text": "تحسين النتائج — تغيير اسم عمود 'تاريخ النشر' إلى 'تاريخ البدء' (Beginn)"
+            },
+            {
+                "type": "fixed",
+                "text": "إصلاح خطأ التهيئة (RuntimeError) في صفحة البحث"
+            },
+            {
+                "type": "fixed",
+                "text": "معالجة أخطاء عرض لوحة التحكم وتداخل العناصر"
+            },
+        ]
+    },
+    {
+        "version": "1.0.2",
+        "date": "أبريل 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "new",
+                "text": "سجل بحث ذكي — أعد تشغيل عمليات البحث السابقة على الفور"
+            },
+            {
+                "type": "new",
+                "text": "إشعارات منبثقة مباشرة لتقدم الاستخراج"
+            },
+            {
+                "type": "new",
+                "text": "سحب وإفلات لإعادة ترتيب قائمة المستلمين في صفحة الإرسال"
+            },
+            {
+                "type": "improved",
+                "text": "مستخرج Aubi-Plus الآن أسرع 10 مرات باستخدام تقنية الجلب داخل الصفحة"
+            },
+            {
+                "type": "improved",
+                "text": "إخفاء نوافذ ملفات تعريف الارتباط تلقائيًا — لا مزيد من الجلسات المحظورة"
+            },
+            {
+                "type": "fixed",
+                "text": "زري مسح البيانات وإعادة الضبط يعرضان الآن بشكل صحيح"
+            },
+            {
+                "type": "fixed",
+                "text": "صفحة الإعدادات لم تعد تخرج عن إطار العرض"
+            },
+        ]
+    },
+    {
+        "version": "1.0.1",
+        "date": "مارس 2026",
+        "label": None,
+        "label_color": None,
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "new",
+                "text": "صفحة بث البريد الإلكتروني مع محرك SMTP للتسويق المباشر"
+            },
+            {
+                "type": "new",
+                "text": "مراقب التشغيل مع بث نشاط حي ومباشر"
+            },
+            {
+                "type": "improved",
+                "text": "جدول الإحصائيات مزود بفلاتر المصدر والمدينة"
+            },
+            {
+                "type": "fixed",
+                "text": "جلسة المتصفح لم تعد تتوقف عند قفل ملفات تعريف الارتباط"
+            },
+        ]
+    },
+    {
+        "version": "1.0.0",
+        "date": "فبراير 2026",
+        "label": "الإصدار الأولي",
+        "label_color": "#8E8E93",
+        "type_labels": {
+            "new": "جديد",
+            "improved": "مُحسَّن",
+            "fixed": "مُصلَّح",
+            "removed": "مُزال"
+        },
+        "changes": [
+            {
+                "type": "new",
+                "text": "النسخة الأولى — برامج استخراج Ausbildung.de + Aubi-Plus"
+            },
+            {
+                "type": "new",
+                "text": "استخراج تفاصيل مسارات العمل من خرائط جوجل"
+            },
+            {
+                "type": "new",
+                "text": "قاعدة بيانات متكاملة للعملاء المحتملين مع ميزة تصدير Excel"
+            },
+        ]
+    }
+]
+
+# 1.1.1
