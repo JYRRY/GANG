@@ -1,10 +1,10 @@
-# ZUGZWANG - Python Dependencies
+# ZUGZWANG 1.1.1 - Python Dependencies
 # Install with: pip install -r requirements.txt
 # Then: playwright install chromium
 
 # UI Framework
 PySide6>=6.6.0
-PyQt-Fluent-Widgets[pyside6]>=1.6.3
+PySide6-Fluent-Widgets>=1.6.3
 
 # Browser Automation
 playwright>=1.40.0
@@ -23,3 +23,9 @@ psutil>=5.9.0
 pypdf>=4.0.0
 reportlab>=4.0.0
 
+# HTML Parsing
+beautifulsoup4>=4.12.0
+
+# Offline CAPTCHA Solver & Machine Learning
+ddddocr>=1.6.0
+numpy>=1.26.0

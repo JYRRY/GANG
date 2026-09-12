@@ -160,6 +160,14 @@ def main():
     # Install global crash reporter
     sys.excepthook = _global_exception_handler
 
+    # Ensure frozen bundle path or project root is at top of sys.path
+    if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+        _bundle_dir = Path(sys._MEIPASS)
+    else:
+        _bundle_dir = Path(__file__).parent.resolve()
+    if str(_bundle_dir) not in sys.path:
+        sys.path.insert(0, str(_bundle_dir))
+
     # High DPI scaling environment variables must be set before QApplication
     os.environ.setdefault("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
     
@@ -245,14 +253,20 @@ def main():
         _win_utils.getResizeBorderThickness = _cached_getResizeBorder
 
         print("[win32_patch] Win32 RPC cache patches installed (4 functions).")
-    except (ImportError, AttributeError) as _e:
-        print(f"[win32_patch] Skipping Win32 patches: {_e}")
+    except (ImportError, AttributeError):
+        pass
     # ------------------------------------------------
 
     app = QApplication(sys.argv)
+    app.setApplicationName("ZUGZWANG")
+    app.setApplicationDisplayName("ZUGZWANG")
     
     # Normalizes underlying geometries across OS (crucial for custom stylesheets)
     app.setStyle("Fusion")
+    
+    from src.ui.components import GlassToolTipFilter
+    app.tooltip_filter = GlassToolTipFilter()
+    app.installEventFilter(app.tooltip_filter)
     
     from PySide6.QtWidgets import QProxyStyle, QStyle
     class ZugzwangStyle(QProxyStyle):
@@ -309,10 +323,12 @@ def main():
     font.setWeight(QFont.Weight.Normal)
     app.setFont(font)
 
-    # Set icon globally (used for taskbar, window title, and all dialogs)
-    icon_path = base_dir / "assets" / "icon.ico"
-    if icon_path.exists():
-        app.setWindowIcon(QIcon(str(icon_path)))
+    # Set icon globally (used for taskbar, window title, macOS Dock, and all dialogs)
+    for _icon_name in ("icon.icns", "icon.ico"):
+        _icon_path = base_dir / "assets" / _icon_name
+        if _icon_path.exists():
+            app.setWindowIcon(QIcon(str(_icon_path)))
+            break
 
     from src.ui.main_window import MainWindow
     from src.core.config import config_manager
@@ -341,12 +357,22 @@ def main():
     window = MainWindow()
     window.show() # Initialization-level maximization handled inside MainWindow.showEvent
 
-    # 3. Dynamic Diagnostics (Freeze Watchdog & Contention Monitoring)
+    # 3. Dynamic Diagnostics (Freeze Watchdog & Contention Monitoring - Debug only)
+    if os.environ.get("ZUGZWANG_DEBUG", "").lower() in ("1", "true"):
+        try:
+            from src.diagnostics import install_diagnostics
+            install_diagnostics(app)
+        except Exception as e:
+            print(f"Warning: Could not install diagnostics: {e}")
+
+    # 4. Start Background Services
     try:
-        from src.diagnostics import install_diagnostics
-        install_diagnostics(app)
+        from src.services.backup_service import BackupService
+        backup_service = BackupService(app)
+        # Keep a reference so it doesn't get garbage collected
+        app._backup_service = backup_service
     except Exception as e:
-        print(f"Warning: Could not install diagnostics: {e}")
+        print(f"Warning: Could not start BackupService: {e}")
 
     # If the app exits event loop cleanly, exit process cleanly
     sys.exit(app.exec())
@@ -354,3 +380,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# 1.1.1

@@ -4,7 +4,7 @@
 ; Build: makensis installer.nsi
 
 !define APP_NAME "ZUGZWANG"
-!define APP_VERSION "1.0.94"
+!define APP_VERSION "1.1.1"
 !define APP_PUBLISHER "ZUGZWANG"
 !define APP_EXE "ZUGZWANG.exe"
 !define APP_GUID "{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
@@ -16,7 +16,7 @@
 
 Name "${APP_NAME}"
 Caption "${APP_NAME} Installer"
-OutFile "ZUGZWANG_Setup_v${APP_VERSION}.exe"
+OutFile "ZUGZWANG_Setup_${APP_VERSION}.exe"
 InstallDir "$PROGRAMFILES64\${APP_NAME}"
 InstallDirRegKey HKCU "Software\${APP_NAME}" "InstallDir"
 RequestExecutionLevel admin
@@ -24,13 +24,13 @@ SetCompressor /SOLID lzma
 BrandingText "ZUGZWANG Installer"
 
 ; Metadata
-VIProductVersion "1.0.9.1"
+VIProductVersion "1.1.1.0"
 VIAddVersionKey "ProductName" "${APP_NAME}"
 VIAddVersionKey "ProductVersion" "${APP_VERSION}"
 VIAddVersionKey "CompanyName" "${APP_PUBLISHER}"
 VIAddVersionKey "FileDescription" "${APP_NAME} Installer"
 VIAddVersionKey "FileVersion" "${APP_VERSION}"
-VIAddVersionKey "LegalCopyright" "Copyright 2024 ${APP_PUBLISHER}"
+VIAddVersionKey "LegalCopyright" "Copyright 2026 ${APP_PUBLISHER}"
 
 ; MUI Settings
 !define MUI_ABORTWARNING
@@ -132,3 +132,5 @@ Section "Uninstall"
   DeleteRegKey HKCU "Software\${APP_NAME}"
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_GUID}"
 SectionEnd
+
+; 1.1.1
